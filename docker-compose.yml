@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15.2-alpine
+    container_name: postgres-to-12
+    restart: always
+    environment:
+      POSTGRES_USER: test_user_postgres
+      POSTGRES_PASSWORD: test_password_postgres
+      POSTGRES_DB: test_jest
+    ports:
+      - "127.0.0.1:5432:5432"
