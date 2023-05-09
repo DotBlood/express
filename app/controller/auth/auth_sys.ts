@@ -19,8 +19,9 @@ export = new class Autorization_sys {
             const passinDb = userDb.rows[0].password
             let result = compareSync(password, passinDb)
             if (result) {
-                let uuid = this.CreateSession(userDb.rows[0].user_id)
-                return { error: false, cookie: uuid }
+                let UUID = randomUUID()
+                this.CreateSession(userDb.rows[0].user_id, UUID)
+                return { error: false, cookie: UUID }
             }
         }
         return { error: true, cookie: undefined }
@@ -33,15 +34,14 @@ export = new class Autorization_sys {
         let HashPassword = hashSync(password, this.salt)
         await pool.addNewUserRegister(username, email, HashPassword);
         let userdata = await pool.findUserByUsername(username)
-        let uuid = await this.CreateSession(userdata.rows[0].id)
-        return { error: false, cookie: uuid };
+        let UUID = randomUUID()
+        await this.CreateSession(userdata.rows[0].id, UUID)
+        return { error: false, cookie: UUID };
     }
 
-    public async CreateSession(user_id: string) {
+    public async CreateSession(user_id: string, UUID: string) {
         const pool = this.getDatabase.GetUser
-        let UUID = randomUUID()
         await pool.addSessionToUser(user_id, UUID)
-        return UUID
     }
 
 }

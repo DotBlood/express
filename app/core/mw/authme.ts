@@ -7,31 +7,30 @@ type res = typeof response
 
 
 export class authorizationMW {
-    getDatabase: InitStartUp;
-
-    constructor() {
-        this.getDatabase = new InitStartUp()
-    }
 
     public async volidateSession(req: req, res: res, next: NextFunction) {
         if (req.cookies.session) {
             const session = req.cookies.session
-            console.log(session)
-            const pool = await this.getDatabase.GetUser.findSession(session);
-            if (pool.rows.length > 0) {
+            const db = new InitStartUp();
+            let result = await db.GetUser.findSession(session);
+            if (result.rows.length > 0) {
                 return next()
             }
+            res.clearCookie('session', { httpOnly: true })
+            return res.redirect('/auth/login')
         }
-        res.clearCookie('session', { httpOnly: true })
         return res.redirect('/auth/login')
     }
 
+
+
     public async stopLoginRegister(req: req, res: res, next: NextFunction) {
-        if (req.cookies.session) {
-            const session = req.cookies.session
-            console.log(session)
-            const pool = await this.getDatabase.GetUser.findSession(session);
-            if (pool.rows.length < 0) {
+        if (req.cookies['session']) {
+            const session = req.cookies['session']
+
+            const db = new InitStartUp();
+            let result = await db.GetUser.findSession(session);
+            if (result.rows.length > 0) {
                 return res.redirect('/')
             }
             res.clearCookie('session', { httpOnly: true })
@@ -39,6 +38,5 @@ export class authorizationMW {
         }
         return next()
     }
-
 
 }

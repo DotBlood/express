@@ -48,7 +48,7 @@ export class Users {
 
     public async findSession(sessionKey: string) {
         const connect = this.pool.connect()
-        let result = await this.pool.query('SELECT * FROM  sesin WHERE session = $1', [sessionKey])
+        let result = await this.pool.query('SELECT * FROM session WHERE session = $1', [sessionKey])
             ; (await connect).release()
         return result;
     }

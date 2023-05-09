@@ -44,9 +44,7 @@ Routers.post('/login', new authorizationMW().stopLoginRegister, async (req, res)
     }
 
     res.cookie('session', session.cookie, { httpOnly: true });
-    res.redirect('/');
-
-    return res.send('Cookie установлен');
+    return res.redirect('/');
 })
 
 
@@ -72,8 +70,7 @@ Routers.post('/register', new authorizationMW().stopLoginRegister, async (req, r
 
     res.cookie('session', session.cookie, { httpOnly: true });
 
-    res.redirect('/');
-    return res.send('Cookie установлен');
+    return res.redirect('/');
 })
 
 Routers.get('/logout', (req, res) => { })
