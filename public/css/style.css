@@ -1,0 +1,50 @@
+body {
+    background: var(--bg--color);
+    color: var(--text--color);
+    font-size: 1rem;
+    font-family: var(--text--font-family);
+}
+
+a {
+    position: relative;
+    color: var(--link--color);
+    text-decoration: none;
+    width: 100%;
+}
+
+
+
+a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    height: 1px;
+    width: 0%;
+    transition: width 0.5s ease, background 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+    background: #fff;
+}
+
+header {
+    padding: 20px;
+    background-color: var(--second--bg--color);
+}
+
+footer {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+/* swal2-container swal2-top-end swal2-backdrop-show */
+
+.swal2-popup swal2-toast swal2-icon-error swal2-show{
+    background: #000;
+}

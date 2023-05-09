@@ -17,7 +17,7 @@ export class Database {
         return (Database.instance);
     }
 
-    public getPool(): Pool {
+    public get getPool(): Pool {
         return this.pool;
     }
 }

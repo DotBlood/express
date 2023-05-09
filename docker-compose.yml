@@ -3,11 +3,11 @@ version: "3.8"
 services:
   postgres:
     image: postgres:15.2-alpine
-    container_name: postgres-to-12
+    container_name: postgres-to-express
     restart: always
     environment:
-      POSTGRES_USER: test_user_postgres
-      POSTGRES_PASSWORD: test_password_postgres
-      POSTGRES_DB: test_jest
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: app_pass
+      POSTGRES_DB: app_database
     ports:
       - "127.0.0.1:5432:5432"

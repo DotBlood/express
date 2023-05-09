@@ -9,7 +9,7 @@ export class Tags {
     static GetTagByID: any;
 
     constructor(database: Database) {
-        this.pool = database.getPool()
+        this.pool = database.getPool
         this.database = database;
     }
 
