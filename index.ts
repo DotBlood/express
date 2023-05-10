@@ -1,8 +1,8 @@
 import express from "express";
 import { InitStartUp } from './startUp';
-import { error, log } from "console";
 import Routers from './app/router/auth'
 import cookieParser from "cookie-parser";
+import { log } from "./app/core/Logger/Logger";
 const app = express()
 
 const startuper = new InitStartUp();
@@ -13,7 +13,7 @@ function main() {
         startuper.DataBaseStartUP();
     }
     catch (err) {
-        error(err)
+        log.warn(err)
     }
     finally {
         app.use(express.static(__dirname + '/public'));
@@ -25,7 +25,7 @@ function main() {
         app.use('/auth/', Routers);
 
         app.listen('3000', () => {
-            log('server has start on http://localhost:3000/')
+            log.info('server has start on http://localhost:3000/')
         });
     }
 }

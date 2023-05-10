@@ -5,6 +5,7 @@ import { Tags } from "./app/core/database/Tags";
 import { Users } from "./app/core/database/Users";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import { log } from "./app/core/Logger/Logger";
 
 
 let Config = {
@@ -26,25 +27,24 @@ export class InitStartUp {
         this.dbTag = new Tags(this.database);
         this.dbUser = new Users(this.database);
     }
-    
+
     public async DataBaseStartUP() {
         const pool = this.database.getPool
         const sql = await readFile(join(__dirname, '.sql'), { encoding: 'utf-8' });
         pool
             .connect()
             .then(async (con) => {
-                // add sql 
-                try {
-                    await con.query(sql)
-                    await con.release()
-                    return true
-                }
-                catch (err) {
-                    console.error(err)
-                    return false
-                }
+                await con.query(sql)
+                con.release()
+                log.info('Database is ready')
+                return true
             })
-
+            .catch(err => {
+                log.error(err, 'The database does not connect. Try connecting in 5 seconds')
+                setTimeout(async () => {
+                    await this.DataBaseStartUP()
+                }, 5 * 1000)
+            })
     }
 
     get GetUser() {
