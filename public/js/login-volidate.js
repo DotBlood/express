@@ -39,7 +39,6 @@ f.addEventListener('submit', (e) => {
 });
 
 const input = document.querySelectorAll('input')
-console.log(input)
 input.forEach((key) => {
     key.addEventListener('input', () => {
         let key_replace = key.value.replaceAll(' ', '')

@@ -14,6 +14,9 @@
     --text--color--link--hover: #fff;
     --text--bg--link--after: #d83030;
 
+    --nav--logo-fs: 2rem;
+    --nav--logo-fw: 800;
+
     /* border */
     --border-radius: 5px;
 

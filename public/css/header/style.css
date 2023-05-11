@@ -1,0 +1,78 @@
+header {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    background-color: var(--second--bg--color);
+}
+
+
+.nav__header {
+    width: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.nav__inner {
+    display: flex;
+    align-items: center;
+}
+
+.nav__inner .nav__logo {
+    font-size: var(--nav--logo-fs);
+    font-weight: var(--nav--logo-fw);
+    width: 200px;
+}
+
+.nav__inner .nav__menu {
+    display: flex;
+    margin: 0 auto;
+}
+
+.nav__inner .nav__menu .menu__links {
+    margin-left: 15px;
+}
+
+.nav__inner .nav__menu .menu__links:nth-child(1) {
+    margin-left: 0px;
+}
+
+.nav__inner .nav__account {
+    display: flex;
+    width: 200px;
+}
+
+.nav__inner .account__links {
+    margin-right: 15px;
+}
+
+.nav__inner .account__links:nth-last-child() {
+    margin-right: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* burger */
+.nav__burger {
+    display: none;
+}

@@ -1,9 +1,10 @@
 import { Router } from "express";
 import Autorization_sys from '../controller/auth/auth_sys'
 import { authorizationMW } from "../core/mw/authme";
+const mw = new authorizationMW()
 
 
-const Routers: Router = Router()
+const AuthR: Router = Router()
 
 interface IresponseData {
     user_auth: boolean
@@ -23,9 +24,11 @@ interface IreqRegisterData {
 }
 
 
-Routers.get('/login', new authorizationMW().stopLoginRegister, (req, res) => {
+AuthR.get('/', (req, res) => res.redirect(301, '/auth/login'))
+AuthR.post('/', (req, res) => res.redirect(404, '/'))
 
-    let responseData: IresponseData = { user_auth: false, title: 'Авторизация', header_error: undefined };
+AuthR.get('/login', mw.stopLoginRegister, (req, res) => {
+    let responseData: IresponseData = { user_auth: req.body.isAuth, title: 'Авторизация', header_error: undefined };
 
     if (typeof req.query.error === "string") {
         responseData.header_error = decodeURIComponent(req.query.error);
@@ -34,7 +37,7 @@ Routers.get('/login', new authorizationMW().stopLoginRegister, (req, res) => {
     res.render('pages/auth/login', responseData);
 })
 
-Routers.post('/login', new authorizationMW().stopLoginRegister, async (req, res) => {
+AuthR.post('/login', mw.stopLoginRegister, async (req, res) => {
     let reqestData: IreqLoginData = req.body
     const session = await Autorization_sys.login(reqestData.username, reqestData.password)
 
@@ -44,24 +47,24 @@ Routers.post('/login', new authorizationMW().stopLoginRegister, async (req, res)
     }
 
     res.cookie('session', session.cookie, { httpOnly: true });
-    return res.redirect('/');
+    return res.redirect('/channel/');
 })
 
 
-Routers.get('/register', new authorizationMW().stopLoginRegister, (req, res) => {
-    let responseData: IresponseData = { user_auth: false, title: 'Регистрация', header_error: undefined };
+AuthR.get('/register', mw.stopLoginRegister, (req, res) => {
+    let responseData: IresponseData = { user_auth: req.body.isAuth, title: 'Регистрация', header_error: undefined };
     if (typeof req.query.error === "string") {
         responseData.header_error = decodeURIComponent(req.query.error);
     }
-    res.render('pages/auth/register', responseData);;
+    res.render('pages/auth/register', responseData);
 });
 
 
-Routers.post('/register', new authorizationMW().stopLoginRegister, async (req, res) => {
+AuthR.post('/register', mw.stopLoginRegister, async (req, res) => {
 
     let reqestData: IreqRegisterData = req.body
 
-    let session = await Autorization_sys.Register(reqestData.username, reqestData.email, reqestData.password)
+    let session = await Autorization_sys.Register(req.body.username, reqestData.email, reqestData.password)
 
     if (session.error == true) {
         let errorMessage = 'auth_1';
@@ -70,9 +73,12 @@ Routers.post('/register', new authorizationMW().stopLoginRegister, async (req, r
 
     res.cookie('session', session.cookie, { httpOnly: true });
 
-    return res.redirect('/');
+    return res.redirect('/channel/');
 })
 
-Routers.get('/logout', (req, res) => { })
+AuthR.get('/logout', mw.volidateSession, async (req, res) => {
+    await Autorization_sys.Logout(req.cookies['session'])
+    return res.redirect('/')
+})
 
-export = Routers;
+export { AuthR };

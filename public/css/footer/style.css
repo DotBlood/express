@@ -1,0 +1,14 @@
+footer {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.footer_text {
+    font-weight: 100;
+    padding: 5px;
+    user-select: none;
+    text-align: center;
+}

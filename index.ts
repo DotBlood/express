@@ -1,8 +1,10 @@
+import { log } from "./app/core/Logger/Logger";
 import express from "express";
 import { InitStartUp } from './startUp';
-import Routers from './app/router/auth'
 import cookieParser from "cookie-parser";
-import { log } from "./app/core/Logger/Logger";
+import { AuthR } from './app/router/auth'
+import { ChanelR } from './app/router/chanel'
+import { WebSoket } from "./websoket";
 const app = express()
 
 const startuper = new InitStartUp();
@@ -20,13 +22,13 @@ function main() {
         app.set('view engine', 'ejs');
         app.use(cookieParser())
         app.use(express.urlencoded({ extended: false }))
+        app.use('/auth/', AuthR);
+        app.use(ChanelR)
 
 
-        app.use('/auth/', Routers);
-
-        app.listen('3000', () => {
-            log.info('server has start on http://localhost:3000/')
-        });
+        let server = new WebSoket(app)
+        server.SConnect(80)
+        log.info('Server has start')
     }
 }
 

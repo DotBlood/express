@@ -53,5 +53,12 @@ export class Users {
         return result;
     }
 
+    public async removeSession(sessionKey: string){
+        const connect = this.pool.connect()
+        let result = await this.pool.query('DELETE FROM session WHERE session = $1', [sessionKey])
+            ; (await connect).release()
+        return result;
+    }
+
 
 }
