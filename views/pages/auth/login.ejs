@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <%- include('../../partials/head'); %>
@@ -22,8 +22,6 @@
     <script src="/js/login-volidate.js"></script>
 
     <% if (header_error=='auth_2' ) { %>
-
-        <script src="/js/show_error.js"></script>
         <script>
             window.onload = () => {
                 alers('Ошибка', 'Неверный Username или Password!', 'error')
@@ -35,7 +33,7 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io();
+    var socket = io();
 </script>
 
 </html>

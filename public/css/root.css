@@ -14,8 +14,15 @@
     --text--color--link--hover: #fff;
     --text--bg--link--after: #d83030;
 
+    /* nav */
     --nav--logo-fs: 2rem;
     --nav--logo-fw: 800;
+    --nav--link-fw: 600;
+    --nav--link-fs: 1.03rem;
+
+    /* links */
+    --links--color--hover: #a6f8ff;
+
 
     /* border */
     --border-radius: 5px;

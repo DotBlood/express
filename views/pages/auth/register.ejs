@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <%- include('../../partials/head'); %>
@@ -22,8 +22,6 @@
     <script src="/js/register-volidate.js"></script>
 
     <% if (header_error=='auth_1' ) { %>
-
-        <script src="/js/show_error.js"></script>
         <script>
             window.onload = () => {
                 alers('Ошибка', 'Данный Username или Email уже занят!', 'error')

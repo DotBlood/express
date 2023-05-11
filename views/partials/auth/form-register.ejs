@@ -1,66 +1,44 @@
 <div class="auth">
-
     <div class="auth__inner">
-        <p class="auth__title">Регистрация</p>
+        <form class="auth__form" action="/auth/register" method="post">
+            <p class="form__title">Регистрация</p>
 
-        <form class="form" action="/auth/register" method="post">
-            <label>
-                <input class="form__email" type="text" name="email" placeholder="Exemple@mail.com">
+            <input class="form__input email" type="text" name="email" placeholder="Exemple@mail.com">
+
+            <input class="form__input username" type="Username" name="username" minlength="6" placeholder="Username"
+                autocomplete="username">
+            <label class="form__lable--password">
+                <input class="form__input password" type="Password" minlength="6" name="password"
+                    placeholder="Password">
+                <span class="show__password"> </span>
             </label>
-
-            <label>
-                <input class="form__username" type="text" name="username" placeholder="Username">
+            <label class="form__lable--password">
+                <input class="form__input password_confirm" placeholder="Password confirm" type="password"
+                    name="password_confirm">
             </label>
-
-            <label class="m_pass">
-                <input class="form__password" type="password" name="password" placeholder="Password">
-                <span class="show__password" id="1"> </span>
-            </label>
-
-            <label class="c_pass">
-                <input class="form__confirm__password" type="password" name="password_confirm"
-                    placeholder="Password Сonfirm">
-                <span class="show__password" id="2"> </span>
-            </label>
-
-            <div class="form__btn_s">
-                <button class="btn" type="submit">Создать</button>
-                <a href="/auth/login">Уже есть аккаунт?</a>
+            <div class="form__lastblock">
+                <button class="form__btns" type="submit">Войти</button>
+                <a href="/auth/login" class="form__links">Уже есть аккаунт?</a>
             </div>
         </form>
     </div>
 </div>
 
+
+
 <script>
+    let btnShowPass = document.querySelector('.show__password');
+    let passInput = document.querySelector('.password');
 
-    let a = document.querySelectorAll('.show__password');
-
-    a.forEach(key => {
-        if (key.id == 1) {
-            let x = document.querySelector('.form__password');
-            key.addEventListener('click', () => {
-                if (x.type === "password") {
-                    x.type = "text";
-                    key.style.background = `url("/img/eye-off.svg") 0 0 no-repeat`
-                } else {
-                    x.type = "password";
-                    key.style.background = `url("/img/eye-on.svg") 0 0 no-repeat`
-                }
-            })
+    btnShowPass.addEventListener('click', (e) => {
+        if (passInput.type === "password") {
+            passInput.type = "text";
+            btnShowPass.style.background = `url("/img/eye-off.svg") 0 0 no-repeat`
+            btnShowPass.style.backgroundPosition = `center`;
+        } else {
+            a.style.background = `url("/img/eye-on.svg") 0 0 no-repeat`
+            a.style.backgroundPosition = `center`;
+            passInput.type = "password";
         }
-        if (key.id == 2) {
-            let x = document.querySelector('.form__confirm__password');
-            key.addEventListener('click', () => {
-                if (x.type === "password") {
-                    x.type = "text";
-                    key.style.background = `url("/img/eye-off.svg") 0 0 no-repeat`
-                } else {
-                    x.type = "password";
-                    key.style.background = `url("/img/eye-on.svg") 0 0 no-repeat`
-                }
-            })
-        }
-
     })
-
 </script>

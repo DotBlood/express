@@ -1,39 +1,51 @@
-<div class="auth__register">
-
-    <div class="register__inner">
-        <p class="register__title">Авторизация</p>
-
-        <form class="register__form" action="/auth/login" method="post">
-            <label>
-                <input class="form__username" type="text" name="username" placeholder="Username"
-                    autocomplete="username">
-            </label>
-
-            <label class="l_pass">
-                <input class="form__password" type="password" name="password" placeholder="Password" autocomplete="off">
+<div class="auth">
+    <div class="auth__inner">
+        <form class="auth__form" action="/auth/login" method="post">
+            <p class="form__title">Авторизация</p>
+            <input class="form__input username" type="Username" name="username" minlength="6" placeholder="Username"
+                autocomplete="username">
+            <label class="form__lable--password">
+                <input class="form__input password" type="Password" minlength="6" name="password"
+                    placeholder="Password">
                 <span class="show__password"> </span>
             </label>
-
-            <div class="form__btn_s">
-                <button class="btn" type="submit">Войти</button>
-                <a href="/auth/register">Еще нет аккаунта?</a>
+            <div class="form__lastblock">
+                <button class="form__btns" type="submit">Войти</button>
+                <a href="/auth/register" class="form__links">Еще нет аккаунта?</a>
             </div>
         </form>
     </div>
 </div>
 
+
+
 <script>
     let a = document.querySelector('.show__password');
-    let x = document.querySelector('.form__password');
+    let x = document.querySelector('.form__input.password');
 
     a.addEventListener('click', (e) => {
         if (x.type === "password") {
             x.type = "text";
             a.style.background = `url("/img/eye-off.svg") 0 0 no-repeat`
+            a.style.backgroundPosition = `center`;
         } else {
             a.style.background = `url("/img/eye-on.svg") 0 0 no-repeat`
+            a.style.backgroundPosition = `center`;
             x.type = "password";
         }
     })
 
+
+    const input = document.querySelectorAll('input');
+    input.forEach((key) => {
+        key.addEventListener('input', () => {
+            var key_replace = key.value.replaceAll(' ', '')
+            if (key_replace.length >= 6) {
+                return key.style.borderColor = `green`;
+            }
+            else {
+                return key.style.borderColor = null;
+            }
+        })
+    })
 </script>

@@ -1,21 +1,14 @@
-const f = document.querySelector('.form');
+const auth__form = document.querySelector('.auth__form');
 const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-function include(url) {
-    var script = document.createElement('script');
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-}
 
-include("/js/alerts.js")
-
-f.addEventListener('submit', (e) => {
+auth__form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const email = document.querySelector('.form__email');
-    const username = document.querySelector('.form__username');
-    const password = document.querySelector('.form__password');
-    const password_confirm = document.querySelector('.form__confirm__password');
+    const email = auth__form.querySelector('.email');
+    const username = auth__form.querySelector('.username');
+    const password = auth__form.querySelector('.password');
+    const password_confirm = auth__form.querySelector('.password_confirm');
 
     email.style.borderColor = null;
     username.style.borderColor = null;
@@ -57,7 +50,7 @@ f.addEventListener('submit', (e) => {
 
     if (isValid) {
         alers("Успешно!", '', 'success');
-        f.submit();
+        auth__form.submit();
     } else {
         alers('Ошибка!', 'Указаны не все поля', 'error')
     }
@@ -66,6 +59,7 @@ f.addEventListener('submit', (e) => {
 
 const input = document.querySelectorAll('input')
 input.forEach((key) => {
+    console.log(key)
 
     if (key.name == "email") {
         return key.addEventListener('input', () => {
@@ -83,7 +77,7 @@ input.forEach((key) => {
         return key.addEventListener('input', () => {
             let key_replace = key.value.replaceAll(' ', '').length
 
-            let password = document.querySelector('.form__password')
+            let password = auth__form.querySelector('.password')
             let password_replace = password.value.replaceAll(' ', '').length
 
             if (password_replace == 0) return key.style.borderColor = null;

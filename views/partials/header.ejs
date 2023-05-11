@@ -1,30 +1,37 @@
 <nav class="nav__header">
     <div class="nav__inner">
-        <p class="nav__logo">#MyChatSorter</p>
 
-        <ul class="nav__menu">
-            <li class="menu__links">
-                <a class="menu__link links" href="/">Главная</a>
-            </li>
-            <li class="menu__links">
-                <a class="menu__link links" href="/">Каналы</a>
-            </li>
-            <li class="menu__links">
-                <a class="menu__link links" href="/">Чаты</a>
-            </li>
-        </ul>
+        <div class="fill__nav">
+            <p class="nav__logo">#MyChatSorter</p>
 
-        <ul class="nav__account">
-            <% if(user_auth==true){ %>
-                <li class="account__links links"><a href="/auth/logout" class="account__link">Выход</a></li>
+            <ul class="nav__menu">
+                <li class="menu__links">
+                    <a class="menu__link links" href="/">Главная</a>
+                </li>
+                <li class="menu__links">
+                    <a class="menu__link links" href="/">Каналы</a>
+                </li>
+                <li class="menu__links">
+                    <a class="menu__link links" href="/">Чаты</a>
+                </li>
+            </ul>
 
-                <% } else{ %>
-                    <li class="account__links links"><a href="/auth/login" class="account__link">Вход</a></li>
-                    <li class="account__links links"><a href="/auth/register" class="account__link">Регистрация</a></li>
-                    <% }%>
-        </ul>
+            <ul class="nav__account">
+                <% if(user_auth==true){ %>
+                    <li class="account__links links"><a href="/auth/logout" class="account__link">Выход</a></li>
+
+                    <% } else{ %>
+                        <li class="account__links links"><a href="/auth/login" class="account__link">Вход</a></li>
+                        <li class="account__links links"><a href="/auth/register" class="account__link">Регистрация</a>
+                        </li>
+                        <% }%>
+            </ul>
+        </div>
 
         <div class="nav__burger">
+
+            <p class="nav__logo">#MyChatSorter</p>
+
             <div class="burger__btn">
                 <span></span>
                 <span></span>
@@ -45,7 +52,7 @@
                     </li>
                 </ul>
 
-
+                <hr>
 
                 <ul class="burger__accaunts">
 
@@ -70,9 +77,11 @@
 
 
 <script>
-    let btn = document.querySelector('.menu__btn')
-    let e = document.querySelector('.menuItems')
+    let btn = document.querySelector('.burger__btn')
+    let e = document.querySelector('.burger__inner')
     btn.addEventListener('click', () => {
+
+        btn.classList.toggle('active')
         e.setAttribute('aria-hidden', e.getAttribute('aria-hidden') === 'false')
     })
 </script>
