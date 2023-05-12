@@ -1,5 +1,3 @@
-// Подключение к бд
-
 import { Database } from "./app/core/database/connect";
 import { Tags } from "./app/core/database/Tags";
 import { Users } from "./app/core/database/Users";

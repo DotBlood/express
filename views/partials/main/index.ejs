@@ -1,131 +1,14 @@
 <div class="main__inner">
 
-    <aside class="cheanalBar">
-        <div class="cheanalBar__title">
-            <p class="title__text">Каналы</p>
-        </div>
-        <div class="cheanalBar__inner">
+    <div class="main__chat">
+        <!-- aside -->
+        <%- include('chat/aside.ejs'); %>
 
 
-            <div class="favourites">
-                <div class="favourites__title">
-                    <p class="title__text">Избранное</p>
-                    <span class="title__btn-add ">
-                        +
-                    </span>
-                </div>
-                <ul class="favourites__items">
-                    <p class="items__empety">У Вас нет любимых хэштегов!</p>
-                    <li class="items__item">
-                        <p class="item__link" id="">#наука</p>
-                        <span class="item__remove" id=""></span>
-                        <span class="item__edit" id=""></span>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="chenals">
-                <div class="chenals__title">
-                    <p class="title__text">Каналы</p>
-                    <span class="title__btn-add">
-                        +
-                    </span>
-                </div>
-                <ul class="chenals__items">
-                    <p class="items__empety">У Вас нет доступных чатов!</p>
-
-                    <li class="items__item">
-                        <p class="item__link" id="">Каво?!</p>
-                        <span class="item__remove" id=""></span>
-                        <span class="item__edit" id=""></span>
-                    </li>
-
-                    <li class="items__item">
-                        <p class="item__link" id="">ЫАЫААаыА</p>
-                        <span class="item__remove" id=""></span>
-                        <span class="item__edit" id=""></span>
-                    </li>
-
-                    <li class="items__item">
-                        <p class="item__link" id="">Школа</p>
-                        <span class="item__remove" id=""></span>
-                        <span class="item__edit" id=""></span>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </aside>
-
-    <div class="stan">
-        <article class="chatbar">
-
-            <div class="chatbar__header">
-                <div class="header__inner">
-                    <span class="exit"></span>
-                    <p class="chatbar__title">ЫАЫААаыА</p>
-                </div>
-
-            </div>
-
-            <div class="chatbar__inner">
-
-                <ul class="chatbar__message">
-                    <li class="message__item">
-                        <div class="item__img"></div>
-                        <p class="item__data">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent arcu
-                            diam,
-                            dictum eu nulla nec, rutrum accumsan neque. Suspendisse ut sapien a magna suscipit
-                            imperdiet.
-                            Aliquam accumsan pulvinar velit, ullamcorper rutrum nisi semper nec. Nullam imperdiet nibh a
-                            turpis accumsan, a efficitur tortor sodales. Morbi mattis dignissim enim eu placerat.
-                            Suspendisse condimentum tellus non massa sollicitudin tincidunt. Phasellus gravida
-                            scelerisque
-                            ex, in fringilla erat mattis et. Curabitur pellentesque, ligula a laoreet rutrum, enim est
-                            rutrum metus, id lobortis massa tellus ac enim. Curabitur fringilla vel felis ac facilisis.
-                            In
-                            accumsan consectetur neque, ac congue sem ullamcorper a. Fusce eget consequat purus, sit
-                            amet
-                            tempus nisl.
-                            Aliquam erat volutpat. Curabitur mi nisl, ultricies id odio malesuada, volutpat sagittis
-                            erat.
-                            Duis gravida orci a fringilla viverra. Vivamus nulla ligula, convallis nec auctor a,
-                            hendrerit
-                            nec leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam turpis dolor,
-                            dignissim id erat nec, viverra pulvinar augue. Aliquam eget erat. Integer maximus neque non
-                            enim
-                            fringilla, nec tincidunt massa interdum. Vestibulum ante ipsum primis in faucibus orci
-                            luctus et
-                            ultrices posuere cubilia curae; Orci varius natoque penatibus et magnis dis parturient
-                            montes,
-                            nascetur ridiculus mus.
-                            Mauris congue justo in ligula volutpat tincidunt. Aliquam sit amet mi convallis, molestie
-                            quam
-                            sed, lobortis nisi. Pellentesque scelerisque metus</p>
-                        <span class="msg__zavitok"></span>
-                    </li>
-                </ul>
-
-                <form class="chat">
-                    <input type="text" />
-                    <button type="submit"></button>
-                </form>
-            </div>
-        </article>
+            <!-- article -->
+        <%- include('chat/article.ejs'); %>
     </div>
+
+
 </div>
-
-<script>
-    let a = document.querySelector('.cheanalBar .cheanalBar__title')
-    console.log(a)
-    a.addEventListener('click', () => {
-        if (a.getAttribute('active')) {
-            a.style.bottom = `95%`;
-            a.removeAttribute('active')
-        } else {
-            a.setAttribute = 'active'
-            a.style.bottom = `0`
-        }
-
-    })
-</script>

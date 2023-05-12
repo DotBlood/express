@@ -12,7 +12,6 @@ interface IresponseData {
 
 // index
 ChanelR.get('/', mw.volidateSession, (req, res) => {
-    
     let responseData: IresponseData = { header_error: undefined, title: 'Главная', user_auth: req.body.isAuth }
     res.render('pages/main/index', responseData)
 })
