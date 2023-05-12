@@ -1,0 +1,14 @@
+@import url('/css/main/sidebar.css');
+@import url('/css/main/CahatBar.css');
+
+main {
+    width: 100%;
+    height: 100vh;
+}
+
+.main__inner {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 355px 1fr;
+}

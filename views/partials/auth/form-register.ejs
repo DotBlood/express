@@ -8,7 +8,7 @@
             <input class="form__input username" type="Username" name="username" minlength="6" placeholder="Username"
                 autocomplete="username">
             <label class="form__lable--password">
-                <input class="form__input password" type="Password" minlength="6" name="password"
+                <input class="form__input password" type="password" minlength="6" name="password"
                     placeholder="Password">
                 <span class="show__password"> </span>
             </label>
@@ -17,7 +17,7 @@
                     name="password_confirm">
             </label>
             <div class="form__lastblock">
-                <button class="form__btns" type="submit">Войти</button>
+                <button class="form__btns" type="submit">Регистрация</button>
                 <a href="/auth/login" class="form__links">Уже есть аккаунт?</a>
             </div>
         </form>
@@ -32,13 +32,15 @@
 
     btnShowPass.addEventListener('click', (e) => {
         if (passInput.type === "password") {
-            passInput.type = "text";
             btnShowPass.style.background = `url("/img/eye-off.svg") 0 0 no-repeat`
             btnShowPass.style.backgroundPosition = `center`;
+            btnShowPass.style.backgroundSize = `cover`;
+            return passInput.type = "text";
         } else {
-            a.style.background = `url("/img/eye-on.svg") 0 0 no-repeat`
-            a.style.backgroundPosition = `center`;
-            passInput.type = "password";
+            btnShowPass.style.background = `url("/img/eye-on.svg") 0 0 no-repeat`
+            btnShowPass.style.backgroundPosition = `center`;
+            btnShowPass.style.backgroundSize = `cover`;
+            return passInput.type = "password";
         }
     })
 </script>

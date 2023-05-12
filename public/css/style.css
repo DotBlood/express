@@ -1,6 +1,7 @@
 @import url('/css/footer/style.css');
 @import url('/css/header/style.css');
 @import url('/css/auth/forms.css');
+@import url('/css/main/style.css');
 
 body {
     background: var(--bg--color);

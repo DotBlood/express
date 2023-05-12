@@ -24,7 +24,7 @@ auth__form.addEventListener('submit', (e) => {
         email.style.borderColor = "green";
     }
 
-    if (username.value.replaceAll(' ', '').length < 6) {
+    if (username.value.replaceAll(' ', '').length <= 6) {
         username.style.borderColor = "red";
         isValid = false;
     } else {

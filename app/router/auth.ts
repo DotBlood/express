@@ -47,7 +47,7 @@ AuthR.post('/login', mw.stopLoginRegister, async (req, res) => {
     }
 
     res.cookie('session', session.cookie, { httpOnly: true });
-    return res.redirect('/channel/');
+    return res.redirect('/');
 })
 
 
@@ -73,12 +73,12 @@ AuthR.post('/register', mw.stopLoginRegister, async (req, res) => {
 
     res.cookie('session', session.cookie, { httpOnly: true });
 
-    return res.redirect('/channel/');
+    return res.redirect('/');
 })
 
 AuthR.get('/logout', mw.volidateSession, async (req, res) => {
     await Autorization_sys.Logout(req.cookies['session'])
-    return res.redirect('/')
+    return res.redirect('/auth/login')
 })
 
 export { AuthR };

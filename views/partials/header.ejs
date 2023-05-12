@@ -4,24 +4,13 @@
         <div class="fill__nav">
             <p class="nav__logo">#MyChatSorter</p>
 
-            <ul class="nav__menu">
-                <li class="menu__links">
-                    <a class="menu__link links" href="/">Главная</a>
-                </li>
-                <li class="menu__links">
-                    <a class="menu__link links" href="/">Каналы</a>
-                </li>
-                <li class="menu__links">
-                    <a class="menu__link links" href="/">Чаты</a>
-                </li>
-            </ul>
-
             <ul class="nav__account">
                 <% if(user_auth==true){ %>
                     <li class="account__links links"><a href="/auth/logout" class="account__link">Выход</a></li>
 
                     <% } else{ %>
-                        <li class="account__links links"><a href="/auth/login" class="account__link">Вход</a></li>
+                        <li class="account__links links"><a href="/auth/login" class="account__link">Вход</a>
+                        </li>
                         <li class="account__links links"><a href="/auth/register" class="account__link">Регистрация</a>
                         </li>
                         <% }%>
@@ -39,23 +28,7 @@
             </div>
 
             <div class="burger__inner" aria-hidden="true">
-
-                <ul class="burger__menu">
-                    <li class="menu__links">
-                        <a class="menu__link" href="/">Главная</a>
-                    </li>
-                    <li class="menu__links">
-                        <a class="menu__link" href="/">Каналы</a>
-                    </li>
-                    <li class="menu__links">
-                        <a class="menu__link" href="/">Чаты</a>
-                    </li>
-                </ul>
-
-                <hr>
-
                 <ul class="burger__accaunts">
-
                     <% if(user_auth==true){ %>
                         <li class="account__links"><a href="/auth/logout" class="account__link">Выход</a></li>
 
@@ -64,7 +37,6 @@
                             <li class="account__links"><a href="/auth/register" class="account__link">Регистрация</a>
                             </li>
                             <% }%>
-
                 </ul>
 
             </div>
