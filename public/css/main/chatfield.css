@@ -1,0 +1,29 @@
+@import url('/css/main/chat/header/style.css');
+@import url('/css/main/chat/form.css');
+
+.chatfield {
+    width: 100%;
+    height: 100%;
+}
+
+.chatfield__inner {
+    width: 100%;
+    min-height: 100%;
+}
+
+.chatfield__inner .messages {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    background: #000;
+    min-height: calc(100% - 120px);
+}
+
+.messages__inner {
+    position: relative;
+    height: calc(100% - 120px);
+}
+
+.messages__items {
+    height: 100%;
+}

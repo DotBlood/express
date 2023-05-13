@@ -3,6 +3,7 @@ import { InitStartUp } from "../../../startUp";
 import { UUID, randomUUID } from "crypto";
 
 
+
 export = new class Autorization_sys {
     getDatabase: InitStartUp;
     salt: string;
@@ -44,9 +45,11 @@ export = new class Autorization_sys {
         await pool.addSessionToUser(user_id, UUID)
     }
 
-    public async Logout(session: string){
+    public async Logout(session: string) {
         const pool = this.getDatabase.GetUser
         await pool.removeSession(session)
     }
+
+
 
 }

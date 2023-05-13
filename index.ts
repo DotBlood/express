@@ -4,7 +4,6 @@ import { InitStartUp } from './startUp';
 import cookieParser from "cookie-parser";
 import { AuthR } from './app/router/auth'
 import { ChanelR } from './app/router/chanel'
-import { WebSoket } from "./websoket";
 const app = express()
 
 const startuper = new InitStartUp();
@@ -25,10 +24,11 @@ function main() {
         app.use('/auth/', AuthR);
         app.use(ChanelR)
 
+        
 
-        let server = new WebSoket(app)
-        server.SConnect(80)
-        log.info('Server has start')
+        app.listen(80, () => {
+            log.info('Server has start')
+        });
     }
 }
 
